@@ -11,7 +11,7 @@ This is a sample mobile automation framework designed using Java,Selenium,Appium
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/gokulsam07/checkly.git`
+1. Clone the repository: `git clone https://github.com/gokulsam07/saucelab-app-appium.git`
 
 ### Project Structue
 
