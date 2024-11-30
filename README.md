@@ -24,7 +24,7 @@ saucelab-app-appium/                                  # root dir
      └── screens/                                     # screen objects & actions                 
 ├── src/test/java
      ├── base/BaseTest.java                           # Base tese method for extension                 
-     └── testa/**                                     # test files                       
+     └── tests/**                                     # test files                       
 ├── pom.xml                                           # dependency management
 ├── apps/                                             # apps used for test 
 └── testng.xml                                        # test distribution using testng.xml
