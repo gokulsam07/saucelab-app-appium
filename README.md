@@ -1,11 +1,11 @@
 # appium-framework
 
-This is a sample mobile automation framework designed using Java,Selenium,Appium 2.0 & some of appium plugins
+This is a sample mobile automation framework designed using Java, Selenium/Selenide, Appium 2.0 & some of appium plugins
 
 ### Prerequisites
 
 * Java
-* Selenium 
+* Selenium/Selenide
 * Appium
 * TestNG
 
