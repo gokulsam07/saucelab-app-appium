@@ -16,7 +16,7 @@ public class ProductsTest extends BaseTest {
 
 	@BeforeClass
 	public void startServer() throws MalformedURLException {
-		driver = DriverProvider.createAppiumDriver("Android", "emulator-5556");
+		DriverProvider.createAppiumDriver("Android", "emulator-5556");
 	}
 	@Test(priority=1)
 	public void validateListedProducts() {

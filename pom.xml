@@ -17,15 +17,20 @@
 			<version>7.4.0</version>
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.34</version>
+		</dependency>
+		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
 			<version>9.3.0</version>
 		</dependency>
 		<dependency>
-    <groupId>com.codeborne</groupId>
-    <artifactId>selenide-appium</artifactId>
-    <version>7.5.1</version>
-</dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>selenide-appium</artifactId>
+			<version>7.5.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

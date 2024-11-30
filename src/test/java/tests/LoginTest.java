@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
 	
 	@BeforeClass
 	public void startServer() throws MalformedURLException {
-		driver = DriverProvider.createAppiumDriver("Android", "emulator-5554");
+		DriverProvider.createAppiumDriver("Android", "emulator-5554");
 	}
 	
 	@Test(priority=1)
