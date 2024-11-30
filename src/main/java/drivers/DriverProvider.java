@@ -30,7 +30,6 @@ public class DriverProvider {
 		} else if (platform.equalsIgnoreCase("ios")) {
 			XCUITestOptions options = new XCUITestOptions();
 		    options.setAutomationName(AutomationName.IOS_XCUI_TEST);
-			options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
 			options.setApp(System.getProperty("user.dir") + "/apps/DemoApp.apk");
 			driver.set(new IOSDriver(new URL("http://127.0.0.1:"+selectPort()+""), options));
 			WebDriverRunner.setWebDriver(getDriver());
