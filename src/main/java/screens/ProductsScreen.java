@@ -1,18 +1,19 @@
 package screens;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import static elementutils.LocateStrategy.*;
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
+import static elementutils.LocateStrategy.getLocator;
 
 import java.util.Comparator;
 import java.util.List;
 
-public class ProductsScreen {
-	public WebDriver driver = null;
+import org.openqa.selenium.WebElement;
 
-	public ProductsScreen(WebDriver driver) {
-		this.driver = driver;
+import com.codeborne.selenide.ElementsCollection;
+
+public class ProductsScreen {
+	public ProductsScreen() {
+	
 	}
 
 	private static String PDT_LOGO_AN = "//*[@text='Products']";
@@ -25,13 +26,13 @@ public class ProductsScreen {
 	private static String ITEM_PRICE_IOS = "//*[@content-desc='store item price']";
 
 	public boolean validateProductsScreensisVisible() {
-		return getElementByXPath(driver, PDT_LOGO_AN, PDT_LOGO_IOS).isDisplayed();
+		return $x(getLocator(PDT_LOGO_AN, PDT_LOGO_IOS)).isDisplayed();
 	}
 
 	public boolean validateProducts(List<String> products) {
 		for (String product : products) {
 			System.err.println("Found: " + product);
-			if (!getElementByXPath(driver, "//*[@text='" + product + "']", "//*[@text='" + product + "']")
+			if (!$x(getLocator("//*[@text='" + product + "']", "//*[@text='" + product + "']")).scrollTo()
 					.isDisplayed()) {
 				return false;
 			}
@@ -40,28 +41,28 @@ public class ProductsScreen {
 	}
 
 	public void clickSortButton() {
-		getElementByXPath(driver, SORT_AN, SORT_IOS).click();
+		$x(getLocator(SORT_AN, SORT_IOS)).click();
 	}
 
 	public void selectSort(String name, String type) {
-		getElementByXPath(driver, "//*[@text='" + name + " - " + type + "']",
-				"//*[@text='" + name + " - " + type + "']").click();
+		$x(getLocator("//*[@text='" + name + " - " + type + "']",
+				"//*[@text='" + name + " - " + type + "']")).click();
 	}
 
 	public void validateTypeSortedInExpectedOrder(String type, String order) {
 		if (type.equalsIgnoreCase("price") && order.equalsIgnoreCase("asc")) {
-			validateSortOrder(getElementsByXPath(driver, ITEM_PRICE_AN, ITEM_PRICE_IOS), order);
+			validateSortOrder($$x(getLocator(ITEM_PRICE_AN, ITEM_PRICE_IOS)), order);
 		} else if (type.equalsIgnoreCase("price") && order.equalsIgnoreCase("desc")) {
-			validateSortOrder(getElementsByXPath(driver, ITEM_PRICE_AN, ITEM_PRICE_IOS), order);
+			validateSortOrder($$x(getLocator(ITEM_PRICE_AN, ITEM_PRICE_IOS)), order);
 		} else if (type.equalsIgnoreCase("items") && order.equalsIgnoreCase("asc")) {
-			validateSortOrder(getElementsByXPath(driver, ITEM_NAME_AN, ITEM_NAME_IOS), order);
+			validateSortOrder($$x(getLocator(ITEM_NAME_AN, ITEM_NAME_IOS)), order);
 		} else if (type.equalsIgnoreCase("items") && order.equalsIgnoreCase("desc")) {
-			validateSortOrder(getElementsByXPath(driver, ITEM_NAME_AN, ITEM_NAME_IOS), order);
+			validateSortOrder($$x(getLocator(ITEM_NAME_AN, ITEM_NAME_IOS)), order);
 		}
 
 	}
 
-	public boolean validateSortOrder(List<WebElement> elements, String order) {
+	public boolean validateSortOrder(ElementsCollection elements, String order) {
 		List<String> texts = elements.stream().map(WebElement::getText).toList();
 		System.out.println(texts);
 
@@ -83,7 +84,7 @@ public class ProductsScreen {
 	}
 	
 	public void selectProduct(String product) {
-		getElementByXPath(driver, "//*[@text='"+product+"']", "//*[@text='"+product+"']").click();
+		$x(getLocator("//*[@text='"+product+"']", "//*[@text='"+product+"']")).click();
 	}
 
 }

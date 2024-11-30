@@ -22,34 +22,34 @@ public class CartsTest extends BaseTest {
 
 	@Test(priority=1)
 	public void addToCartTest() {
-		new ProductsScreen(driver).selectProduct("Sauce Labs Backpack");
-		new ProductDetailsScreen(driver).selectCountAndAddToCart(2);
-		Assert.assertTrue(new ProductDetailsScreen(driver).validateCartCount(2), "Cart count is not matching");
+		new ProductsScreen().selectProduct("Sauce Labs Backpack");
+		new ProductDetailsScreen().selectCountAndAddToCart(2);
+		Assert.assertTrue(new ProductDetailsScreen().validateCartCount(2), "Cart count is not matching");
 	}
 
 	@Test(priority=2)
 	public void gotoCartTest() {
-		new ProductDetailsScreen(driver).gotoCart();
-		Assert.assertTrue(new CartsScreen(driver).validateCartScreenIsVisible(), "Cart screen is not visible");
+		new ProductDetailsScreen().gotoCart();
+		Assert.assertTrue(new CartsScreen().validateCartScreenIsVisible(), "Cart screen is not visible");
 	}
 
 	@Test(priority=3)
 	public void checkoutPageTest() {
-		new CartsScreen(driver).proceedCheckOut();
-		Assert.assertTrue(new LoginScreen(driver).validateLoginScreenIsDisplayed(), "Login screen is not shown");
+		new CartsScreen().proceedCheckOut();
+		Assert.assertTrue(new LoginScreen().validateLoginScreenIsDisplayed(), "Login screen is not shown");
 	}
 
 	@Test(priority=4)
 	public void shippingDetailsTest() throws InterruptedException {
-		new LoginScreen(driver).enterUserName("bob@example.com");
-		new LoginScreen(driver).enterPassword("10203040");
-		new LoginScreen(driver).clickLoginBtn();
-		new CartsScreen(driver).enterShippingDetails("Gokul Saminathan", "Chengappalli", "Tiurppur", "638812", "India");
-		new CartsScreen(driver).makePayment();
-		new CartsScreen(driver).enterPaymentDetails("Gokul Saminathan", "1234567898765432", "06/28", "527");
-		new CartsScreen(driver).reviewOrder();
-		new CartsScreen(driver).placeOrder();
-		Assert.assertTrue(new CartsScreen(driver).validateCompletedOrder(),"Order is not placed successfully");
+		new LoginScreen().enterUserName("bob@example.com");
+		new LoginScreen().enterPassword("10203040");
+		new LoginScreen().clickLoginBtn();
+		new CartsScreen().enterShippingDetails("Gokul Saminathan", "Chengappalli", "Tiurppur", "638812", "India");
+		new CartsScreen().makePayment();
+		new CartsScreen().enterPaymentDetails("Gokul Saminathan", "1234567898765432", "06/28", "527");
+		new CartsScreen().reviewOrder();
+		new CartsScreen().placeOrder();
+		Assert.assertTrue(new CartsScreen().validateCompletedOrder(),"Order is not placed successfully");
 	}
 
 }

@@ -1,16 +1,17 @@
 package screens;
 
-import static elementutils.LocateStrategy.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+import static elementutils.LocateStrategy.getLocator;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 
 public class CartsScreen {
 
-	public WebDriver driver = null;
-
-	public CartsScreen(WebDriver driver) {
-		this.driver = driver;
+	public CartsScreen() {
+		
 	}
+	
 	private static String CARTTEXT_AN = "//*[@text='My Cart']";
 	private static String PAY_AN = "//*[@text='To Payment']";
 	private static String REVIEW_AN = "//*[@text='Review Order']";
@@ -42,49 +43,49 @@ public class CartsScreen {
 	private static String CVV_IOS = "//*[@content-desc='Security Code* input field']";
 
 	public boolean validateCartCount(int count) {
-		return getElementByXPath(driver, "//*[@text='" + count + "']", "//*[@text='" + count + "']").isDisplayed();
+		return $x(getLocator("//*[@text='" + count + "']", "//*[@text='" + count + "']")).isDisplayed();
 	}
 
 	public void proceedCheckOut() {
-		getElementByXPath(driver, PROCEEDCHECKOUT_AN, PROCEEDCHECKOUT_IOS).click();
+		$x(getLocator(PROCEEDCHECKOUT_AN, PROCEEDCHECKOUT_IOS)).click();
 	}
 
 	public void enterShippingDetails(String name, String add, String city, String zip, String country) {
-		getElementByXPath(driver, ADDLIN1_AN, ADDLIN1_IOS).sendKeys(add);
-		getElementByClassName(driver, FULLNAME_AN, FULLNAME_IOS).sendKeys(name);
-		getElementByXPath(driver, CITY_AN, CITY_IOS).sendKeys(city);
-		getElementByXPath(driver, ZIPCODE_AN, ZIPCODE_IOS).sendKeys(zip);
-		getElementByXPath(driver, COUNTRY_AN, COUNTRY_IOS).sendKeys(country);
+		$x(getLocator(ADDLIN1_AN, ADDLIN1_IOS)).sendKeys(add);
+		$(By.className(getLocator(FULLNAME_AN, FULLNAME_IOS))).sendKeys(name);
+		$x(getLocator(CITY_AN, CITY_IOS)).sendKeys(city);
+		$x(getLocator(ZIPCODE_AN, ZIPCODE_IOS)).sendKeys(zip);
+		$x(getLocator(COUNTRY_AN, COUNTRY_IOS)).sendKeys(country);
 	}
 
 	public void makePayment() {
-		getElementByXPath(driver, PAY_AN, PAY_IOS).click();
+		$x(getLocator(PAY_AN, PAY_IOS)).click();
 	}
 
 	public void enterPaymentDetails(String name, String cardNo, String exp, String cvv) {
-		getElementByXPath(driver, FULLNAME_AN, FULLNAME_IOS).sendKeys(name);
-		getElementByXPath(driver, CARD_AN, CARD_IOS).sendKeys(cardNo);
-		getElementByXPath(driver, EXPDATE_AN, EXPDATE_IOS).sendKeys(exp);
-		getElementByXPath(driver, CVV_AN, CVV_IOS).sendKeys(cvv);
+		$(By.className(getLocator(FULLNAME_AN, FULLNAME_IOS))).sendKeys(name);
+		$x(getLocator(CARD_AN, CARD_IOS)).sendKeys(cardNo);
+		$x(getLocator(EXPDATE_AN, EXPDATE_IOS)).sendKeys(exp);
+		$x(getLocator(CVV_AN, CVV_IOS)).sendKeys(cvv);
 	}
 
 	public void reviewOrder() throws InterruptedException {
-		getElementByXPath(driver, REVIEW_AN, REVIEW_IOS).click();
-		if(getElementByXPath(driver, REVIEW_AN, REVIEW_IOS).isDisplayed()) {
-			getElementByXPath(driver, REVIEW_AN, REVIEW_IOS).click();
+		$x(getLocator(REVIEW_AN, REVIEW_IOS)).click();
+		if($x(getLocator(REVIEW_AN, REVIEW_IOS)).isDisplayed()) {
+			$x(getLocator(REVIEW_AN, REVIEW_IOS)).click();
 		}
 	}
 
 	public void placeOrder() {
-		getElementByXPath(driver, ORDER_AN, ORDER_IOS).click();
+		$x(getLocator(ORDER_AN, ORDER_IOS)).click();
 	}
 
 	public boolean validateCompletedOrder() {
-		return getElementByXPath(driver, DONE_AN, DONE_IOS).isDisplayed();
+		return $x(getLocator(DONE_AN, DONE_IOS)).isDisplayed();
 	}
 	
 	public boolean validateCartScreenIsVisible() {
-		return getElementByXPath(driver, CARTTEXT_AN, CARTTEXT_IOS).isDisplayed();
+		return $x(getLocator(CARTTEXT_AN, CARTTEXT_IOS)).isDisplayed();
 	}
 
 }

@@ -1,14 +1,14 @@
 package screens;
 
-import static elementutils.LocateStrategy.*;
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+import static elementutils.LocateStrategy.getLocator;
+
+import org.openqa.selenium.By;
 
 public class LogoutScreen {
-
-	public WebDriver driver = null;
-
-	public LogoutScreen(WebDriver driver) {
-		this.driver = driver;
+	
+	public LogoutScreen() {
 	}
 
 	private static String LOGOUT_MSG_AN = "//*[@text='Are you sure you sure you want to logout?']";
@@ -21,16 +21,16 @@ public class LogoutScreen {
 	private static String OK_IOS = "android:id/button1";
 
 	public boolean validateLogoutMessgaeIsDisplayed() {
-		return getElementByXPath(driver, LOGOUT_MSG_AN, LOGOUT_MSG_IOS).isDisplayed();
+		return $x(getLocator(LOGOUT_MSG_AN, LOGOUT_MSG_IOS)).isDisplayed();
 	}
 
 	public void clickLogout() {
-		getElementByID(driver, LOGOUT_AN, LOGOUT_IOS).click();
+		$(By.id(getLocator(LOGOUT_AN, LOGOUT_IOS))).click();
 	}
 
 	public boolean validateSuccessfulLogoutAndClose() {
-		boolean isMsgVisible = getElementByXPath(driver,POST_LOGOUT_MSG_AN,POST_LOGOUT_MSG_IOS).isDisplayed();
-		getElementByID(driver, OK_AN, OK_IOS).click();
+		boolean isMsgVisible = $x(getLocator(POST_LOGOUT_MSG_AN,POST_LOGOUT_MSG_IOS)).isDisplayed();
+		$(By.id(getLocator(OK_AN, OK_IOS))).click();
 		return isMsgVisible;
 	}
 

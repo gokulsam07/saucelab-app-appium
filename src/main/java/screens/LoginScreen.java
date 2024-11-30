@@ -1,13 +1,10 @@
 package screens;
 
-import static elementutils.LocateStrategy.getElementByXPath;
-
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.Selenide.$x;
+import static elementutils.LocateStrategy.getLocator;
 
 public class LoginScreen {
-	public WebDriver driver =null;
-	public LoginScreen(WebDriver driver) {
-		this.driver=driver;
+	public LoginScreen() {
 	}
 	
 	private static String USER_NAME_AN = "//*[@content-desc='Username input field']";
@@ -19,16 +16,16 @@ public class LoginScreen {
 	
 	
 	public void enterUserName(String userName) {
-		getElementByXPath(driver,USER_NAME_AN, USER_NAME_IOS).sendKeys(userName);
+		$x(getLocator(USER_NAME_AN, USER_NAME_IOS)).sendKeys(userName);
 	}
 	public void enterPassword(String pwd) {
-		getElementByXPath(driver,PASSWORD_AN, PASSWORD_IOS).sendKeys(pwd);
+		$x(getLocator(PASSWORD_AN, PASSWORD_IOS)).sendKeys(pwd);
 	}
 	public void clickLoginBtn() {
-		getElementByXPath(driver, LOGIN_BTN_AN, LOGIN_BTN_IOS).click();
+		$x(getLocator(LOGIN_BTN_AN, LOGIN_BTN_IOS)).click();
 	}
 	
 	public boolean validateLoginScreenIsDisplayed() {
-		return getElementByXPath(driver,USER_NAME_AN, USER_NAME_IOS).isDisplayed();
+		return $x(getLocator(USER_NAME_AN, USER_NAME_IOS)).isDisplayed();
 	}
 }

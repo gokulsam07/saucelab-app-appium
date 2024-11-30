@@ -21,20 +21,20 @@ public class ProductsTest extends BaseTest {
 	@Test(priority=1)
 	public void validateListedProducts() {
 		List<String> pdts = Arrays.asList("Sauce Labs Backpack","Sauce Labs Bike Light","Sauce Labs Bolt T-Shirt","Sauce Labs Fleece Jacket","Sauce Labs Onesie","Test.allTheThings() T-Shirt");
-		Assert.assertTrue(new ProductsScreen(driver).validateProducts(pdts),"Some products are missing");
+		Assert.assertTrue(new ProductsScreen().validateProducts(pdts),"Some products are missing");
 	}
 	
 	@Test(priority=2)
 	public void validatePricingSort() {
-		new ProductsScreen(driver).clickSortButton();
-		new ProductsScreen(driver).selectSort("Price","Ascending");
-		new ProductsScreen(driver).validateTypeSortedInExpectedOrder("price", "asc");
+		new ProductsScreen().clickSortButton();
+		new ProductsScreen().selectSort("Price","Ascending");
+		new ProductsScreen().validateTypeSortedInExpectedOrder("price", "asc");
 	}
 	
 	@Test(priority=3)
 	public void validateItemsSort() {
-		new ProductsScreen(driver).clickSortButton();
-		new ProductsScreen(driver).selectSort("Name","Descending");
-		new ProductsScreen(driver).validateTypeSortedInExpectedOrder("price", "desc");
+		new ProductsScreen().clickSortButton();
+		new ProductsScreen().selectSort("Name","Descending");
+		new ProductsScreen().validateTypeSortedInExpectedOrder("price", "desc");
 	}
 }

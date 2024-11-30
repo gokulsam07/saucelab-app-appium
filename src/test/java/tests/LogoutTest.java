@@ -19,16 +19,16 @@ public class LogoutTest extends BaseTest {
 	}
 	@Test(priority=1)
 	public void logOutMessgaeTest() {
-		new HamMenuScreen(driver).clickHamburgerMenu();
-		new HamMenuScreen(driver).clickMenu("Log Out");
-		Assert.assertTrue(new LogoutScreen(driver).validateLogoutMessgaeIsDisplayed(),"Logout messgae is not displayed");		
+		new HamMenuScreen().clickHamburgerMenu();
+		new HamMenuScreen().clickMenu("Log Out");
+		Assert.assertTrue(new LogoutScreen().validateLogoutMessgaeIsDisplayed(),"Logout messgae is not displayed");		
 	}
 	
 	@Test(priority=2)
 	public void logOutTest() {
-		new LogoutScreen(driver).clickLogout();
-		new LogoutScreen(driver).validateSuccessfulLogoutAndClose();
-		Assert.assertTrue(new LoginScreen(driver).validateLoginScreenIsDisplayed(), "Login screen is not visible");
+		new LogoutScreen().clickLogout();
+		new LogoutScreen().validateSuccessfulLogoutAndClose();
+		Assert.assertTrue(new LoginScreen().validateLoginScreenIsDisplayed(), "Login screen is not visible");
 	}
 
 }

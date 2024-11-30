@@ -3,6 +3,8 @@ package drivers;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.codeborne.selenide.WebDriverRunner;
+
 import appiumutils.AppiumServerInitializer;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -22,6 +24,7 @@ public class DriverProvider {
 			options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
 			options.setApp(System.getProperty("user.dir") + "/apps/DemoApp.apk");
 			driver.set(new AndroidDriver(new URL("http://127.0.0.1:"+port+""), options));
+			WebDriverRunner.setWebDriver(getDriver());
 		}
 		return driver.get();
 	}
