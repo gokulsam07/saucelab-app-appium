@@ -5,7 +5,7 @@ This is a sample mobile automation framework designed using Java,Selenium,Appium
 ### Prerequisites
 
 * Java
-* Selenium 
+* Selenium/Selenide
 * Appium
 * TestNG
 
