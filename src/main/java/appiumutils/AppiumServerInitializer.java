@@ -41,7 +41,7 @@ public class AppiumServerInitializer {
 			System.out.println("Port " + port + " is not in use");
 		} else {
 			try {
-				ProcessBuilder findPid = new ProcessBuilder("cmd.exe", "/c", "netstat -ano | findstr " + port);
+				ProcessBuilder findPid = new ProcessBuilder("cmd.exe", "/c", "netstat -ano | findstr: " + port);
 				Process process = findPid.start();
 				BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 				String clop;
