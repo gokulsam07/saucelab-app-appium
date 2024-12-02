@@ -23,7 +23,7 @@ public class BaseTest {
 	@AfterTest
 	public void shutdownAppiumServer() {
 		AppiumServerInitializer.killAppiumServer(2381);
-		AppiumServerInitializer.killAppiumServer(2381);
+		AppiumServerInitializer.killAppiumServer(2382);
 	}
 	
 }
